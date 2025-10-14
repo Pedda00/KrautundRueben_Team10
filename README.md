@@ -5,7 +5,7 @@
 Team-Lead: Miguel
 Prozess-Lead: Peter
 Product-Owner: Thilo
-Security Champion: Peter
+Security Champion: Johnny
 
 ## Teamregeln
 
@@ -18,3 +18,7 @@ Prinzipien der Zusammenarbeit
 - Act like an owner
 - Look out for your team
 - Manage your workload
+
+## Kommunikation
+
+- Discord
