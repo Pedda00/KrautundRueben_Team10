@@ -11,9 +11,25 @@
 -- HAVING 'Anzahl Zutaten' < 6;
 
 -- Version mit Subselect
-SELECT r.NAME ,
- COUNT(DISTINCT rz.ZUTATENID) AS 'Anzahl Zutaten'
+SELECT r.NAME
+-- optional ANzahl Zutaten
+-- , COUNT(DISTINCT rz.ZUTATENID) AS 'Anzahl Zutaten'
 FROM (SELECT NAME, REZEPTID FROM REZEPT WHERE ERNAEHRUNGSKATEGORIE IN ('Vegan')) r
 JOIN REZEPT_ZUTAT rz ON r.REZEPTID = rz.REZEPTID
 GROUP BY r.NAME
-HAVING 'Anzahl Zutaten' < 6;
+HAVING COUNT(DISTINCT rz.ZUTATENID) < 6
+;
+
+-- Version mit CTE
+WITH cte_spezielle_kategorie
+AS (
+    SELECT *
+    FROM REZEPT
+    WHERE ERNAEHRUNGSKATEGORIE IN ('Vegan')
+)
+
+SELECT cte.NAME FROM cte_spezielle_kategorie cte
+JOIN REZEPT_ZUTAT rz ON cte.REZEPTID = rz.REZEPTID
+GROUP BY cte.NAME
+HAVING COUNT(DISTINCT rz.ZUTATENID) < 6
+;
