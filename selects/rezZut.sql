@@ -1,4 +1,5 @@
 -- Rezept raussuchen, die eine/oder mehrere Zutaten enthalten
+-- INNER JOIN, WHERE
 
 SELECT rez.NAME AS 'Rezeptname'
 FROM REZEPT rez

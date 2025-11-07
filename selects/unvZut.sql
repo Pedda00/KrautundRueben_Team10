@@ -1,4 +1,5 @@
 -- Unverknüpfte Zutaten identifizieren: Findet alle Zutaten, die bisher keinem Rezept zugeordnet sind.
+-- INNER JOIN, LEFT JOIN
 
 SELECT zut.NAME AS 'Zutat'
 FROM REZEPT rez

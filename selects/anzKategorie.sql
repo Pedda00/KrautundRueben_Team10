@@ -1,4 +1,6 @@
 -- Anzahl Rezepte nach Ernährungskategorie
+-- GROUP BY, AGG
+
 SELECT
 ERNAEHRUNGSKATEGORIE,
 COUNT(*) AS 'Anzahl Rezepte/Kategorie'
