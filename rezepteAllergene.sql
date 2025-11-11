@@ -1,0 +1,10 @@
+-- Gibt alle Rezept zurück, die nicht die angegeben Allergene enthalten.
+-- JOIN, WHERE
+
+SELECT r.NAME 
+FROM REZEPT r 
+JOIN REZEPT_ZUTAT rz ON r.REZEPTID = rz.REZEPTID
+JOIN ZUTAT_ALLERGEN za ON za.ZUTATENID = rz.ZUTATENID
+JOIN ALLERGEN a ON za.ALLERGENID = a.ALLERGENID
+WHERE a.NAME NOT IN ('')
+;
