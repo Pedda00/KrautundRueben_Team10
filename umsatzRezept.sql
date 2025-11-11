@@ -1,3 +1,7 @@
+-- Select um den Gesamtumsatz pro Rezept zu bekommen.
+-- JOIN, AGG, GROUP BY, WHERE, CTE
+
+-- CTE, die den Preis pro Rezept angibt
 WITH cte_preisRezept AS (
     SELECT r.REZEPTID
     , SUM(rz.REZEPTZUTATENMENGE * z.PREIS_EINHEIT) AS 'Preis'
@@ -7,6 +11,8 @@ WITH cte_preisRezept AS (
     GROUP BY r.REZEPTID
 ) 
 
+-- CTE, die den Namen und die entsprechende Bestellmenge für Bestellungen, 
+-- die bezahlt und nicht storniert worden sind, rausgibt. 
 WITH cte_RezeptBestellung AS (
     SELECT r.NAME
     , r.REZEPTID
@@ -18,7 +24,9 @@ WITH cte_RezeptBestellung AS (
     WHERE rg.BEZAHLT IS NOT NULL AND b.BESTELLUNG IS NULL
 )
 
+-- vereint beide CTEs um den Gesamtumsatz pro Rezept rauszusuchen.
 SELECT rzb.NAME AS 'Rezeptname'
-    , rzb.BESTELLMENGE * prz.Preis AS 'Umsatz'
+    , SUM(rzb.BESTELLMENGE * prz.Preis) AS 'Umsatz'
 FROM cte_RezeptBestellung rzb 
 JOIN cte_preisRezept prz ON rzb.REZEPTID = prz.REZEPTID
+GROUP BY Rezeptname
