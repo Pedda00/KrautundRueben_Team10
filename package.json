@@ -1,0 +1,31 @@
+{
+  "name": "itech_krautundrueben",
+  "version": "1.0.0",
+  "description": "Team-Lead: Miguel\r Prozess-Lead: Peter\r Product-Owner: Thilo\r Security Champion: Johnny",
+  "type": "module",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pedda00/KrautundRueben_Team10.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pedda00/KrautundRueben_Team10/issues"
+  },
+  "homepage": "https://github.com/Pedda00/KrautundRueben_Team10#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
