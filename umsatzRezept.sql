@@ -24,9 +24,11 @@ WITH cte_RezeptBestellung AS (
     WHERE rg.BEZAHLT IS NOT NULL AND b.BESTELLUNG IS NULL
 )
 
--- vereint beide CTEs um den Gesamtumsatz pro Rezept rauszusuchen.
+-- vereint beide CTEs um den Gesamtumsatz pro Rezept als View auszugeben
+CREATE OR REPLACE VIEW view_show_general_sales AS 
 SELECT rzb.NAME AS 'Rezeptname'
     , SUM(rzb.BESTELLMENGE * prz.Preis) AS 'Umsatz'
 FROM cte_RezeptBestellung rzb 
 JOIN cte_preisRezept prz ON rzb.REZEPTID = prz.REZEPTID
 GROUP BY Rezeptname
+;
