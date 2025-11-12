@@ -1,0 +1,26 @@
+-- Bestandskorrektur beim erstmaligen direkten Eintragen des Übergabedatum in Rahmen des erstmaligen Eintragen / INSERT der Versandinformationen
+
+DELIMITER //
+
+CREATE TRIGGER trigger_stock_change_after_insert
+AFTER INSERT ON VERSANDINF
+FOR EACH ROW
+BEGIN
+    IF new.UEBERGABEDATUM IS NOT NULL THEN
+        UPDATE ZUTAT z
+        JOIN BESTELLUNG_ZUTAT bz ON z.ZUTATENID = bz.ZUTATENID
+        JOIN BESTELLUNG b ON bz.BESTELLNR = b.BESTELLNR
+        SET z.LAGERMENGE = z.LAGERMENGE - bz.ZUTATENMENGE
+        WHERE b.VERSANDNR = new.VERSANDNR;
+
+        UPDATE ZUTAT z
+        JOIN REZEPT_ZUTAT rz ON z.ZUTATENID = rz.ZUTATENID
+        JOIN REZEPT r ON rz.REZEPTID = r.REZEPTID
+        JOIN BESTELLUNG_REZEPT br ON r.REZEPTID = br.REZEPTID
+        JOIN BESTELLUNG b ON br.BESTELLNR = b.BESTELLNR
+        SET z.LAGERMENGE = z.LAGERMENGE - (br.REZEPTMENGE * rz.REZEPTZUTATENMENGE)
+        WHERE b.VERSANDNR = new.VERSANDNR;
+    END IF;
+END;
+//
+DELIMITER;

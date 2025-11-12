@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "KrautUndRueben_TestDB",
+            "database": "krautundrueben",
+            "username": "User_1",
+            "password": "EkWYMbGtT2jYOq",
+            "connectionTimeout": 30
+        }
+    ]
+}
