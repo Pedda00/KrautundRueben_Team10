@@ -1,5 +1,4 @@
--- Kombinierte Filter: Zeigt Rezepte an, die sowohl weniger als fünf Zutaten enthalten als auch eine bestimmte Ernährungskategorie erfüllen.
-WITH alle_zutaten AS (
+-- Durchschnittliche Naehrwerte für jede Bestellung eines spezifischen Kunden berechnen
 SELECT
 b.BESTELLNR,
 zn.FETT_G * bz.ZUTATENMENGE AS FETT_G,
