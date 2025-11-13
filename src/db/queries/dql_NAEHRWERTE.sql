@@ -1,4 +1,5 @@
 -- Durchschnittliche Naehrwerte für jede Bestellung eines spezifischen Kunden berechnen
+WITH alle_zutaten AS (
 SELECT
 b.BESTELLNR,
 zn.FETT_G * bz.ZUTATENMENGE AS FETT_G,
